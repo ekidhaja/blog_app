@@ -1,12 +1,22 @@
-import { useContext } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 
-const categories = [{name: 'Web technologies', slug: 'web-tech'}, {name: 'Cloud computing', slug: 'cloud-comp'}];
+import { getCategories } from '../services';
 
 const Header = () => {
+    const [categories, setCategories] = useState([]);
+
+    //fetch categories
+    useEffect(() => {
+        getCategories().then((newCategories) => {
+        setCategories(newCategories);
+        });
+    }, []);
+
     return ( 
         <div className="container mx-auto px-10 mb-8">
             <div className="border-b w-full inline-block border-blue-400 py-8">
+                {/*show app name / logo */}
                 <div className="md:float-left block">
                     <Link href="/">
                         <span className="cursor-pointer font-bold text-4xl text-white">
@@ -14,6 +24,8 @@ const Header = () => {
                         </span>
                     </Link>
                 </div>
+
+                {/*show nav links */}
                 <div className="hidden md:float-left md:contents">
                 {categories.map((category, index) => (
                     <Link key={index} href={`/category/${category.slug}`}>

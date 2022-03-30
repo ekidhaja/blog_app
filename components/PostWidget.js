@@ -8,21 +8,27 @@ import { getSimilarPosts, getRecentPosts } from '../services';
 const PostWidget = ({ categories, slug }) => {
     const [relatedPosts, setRelatedPosts] = useState([]);
 
+    /*get similar posts when we are viewing a particular post
+    * and get recent post when we are at homepage viewing all posts*/
     useEffect(() => {
         if (slug) {
-        getSimilarPosts(categories, slug).then((result) => {
-            setRelatedPosts(result);
-        });
-        } else {
-        getRecentPosts().then((result) => {
-            setRelatedPosts(result);
-        });
+            getSimilarPosts(categories, slug).then((result) => {
+                setRelatedPosts(result);
+            });
+        } 
+        else {
+            getRecentPosts().then((result) => {
+                setRelatedPosts(result);
+            });
         }
     }, [slug]);
 
     return (
         <div className="bg-white shadow-lg rounded-lg p-8 pb-12 mb-8">
-            <h3 className="text-xl mb-8 font-semibold border-b pb-4">{slug ? 'Related Posts' : 'Recent Posts'}</h3>
+            <h3 className="text-xl mb-8 font-semibold border-b pb-4">
+                {slug ? 'Related Posts' : 'Recent Posts'}
+            </h3>
+            {/*display the fetched results */}
             {relatedPosts.map((post, index) => (
                 <div key={index} className="flex items-center w-full mb-4">
                 <div className="w-16 flex-none">
