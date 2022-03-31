@@ -15,3 +15,7 @@ This is a fully responsive CMS Blog app with modern features like recent posts, 
 - [Tailwind CSS](https://tailwindcss.com/) - For styling.
 - [GraphQL](https://graphql.org/) - For quering.
 - [GraphCMS](https://graphcms.com/) - For Schemas and content managament.
+
+## Future work
+
+A signup/signin feature will be added so that various authors can signup, post and manage their individual contents.
