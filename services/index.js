@@ -136,7 +136,7 @@ export const getPostDetails = async (slug) => {
 };
 
 //submit comment
-/*export const submitComment = async (obj) => {
+export const submitComment = async (obj) => {
     const result = await fetch('/api/comments', {
       method: 'POST',
       headers: {
@@ -146,10 +146,10 @@ export const getPostDetails = async (slug) => {
     });
   
     return result.json();
-};*/
+};
 
 //get comments
-/*export const getComments = async (slug) => {
+export const getComments = async (slug) => {
     const query = gql`
       query GetComments($slug:String!) {
         comments(where: {post: {slug:$slug}}){
@@ -163,4 +163,4 @@ export const getPostDetails = async (slug) => {
     const result = await request(graphqlAPI, query, { slug });
   
     return result.comments;
-};*/
+};
